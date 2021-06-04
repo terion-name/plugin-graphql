@@ -1,6 +1,6 @@
 import { Options } from "./support/interfaces";
 import Context from "./common/context";
-import { PluginComponents } from "@vuex-orm/core/lib/plugins/use";
+import { PluginComponents } from "@vuex-orm/core";
 /**
  * Main class of the plugin. Setups the internal context, Vuex actions and model methods
  */

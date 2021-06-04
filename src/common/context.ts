@@ -1,10 +1,10 @@
 import Logger from "./logger";
 import Model from "../orm/model";
 import { Model as ORMModel } from "@vuex-orm/core";
-import { PluginComponents } from "@vuex-orm/core/lib/plugins/use";
+import { PluginComponents } from "@vuex-orm/core";
 import { downcaseFirstLetter, isEqual, pick, singularize } from "../support/utils";
 import Apollo from "../graphql/apollo";
-import Database from "@vuex-orm/core/lib/database/Database";
+import { Database } from "@vuex-orm/core";
 import { Data, Field, GraphQLType, Options } from "../support/interfaces";
 import Schema from "../graphql/schema";
 import { Mock, MockOptions } from "../test-utils";

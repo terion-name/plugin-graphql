@@ -1,5 +1,5 @@
 import VuexORMGraphQL from "./vuex-orm-graphql";
-import { PluginComponents, Plugin } from "@vuex-orm/core/lib/plugins/use";
+import { PluginComponents, Plugin } from "@vuex-orm/core/dist/src/plugins/use";
 import { Options } from "./support/interfaces";
 /**
  * Plugin class. This just provides a static install method for Vuex-ORM and stores the instance of the model

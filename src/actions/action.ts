@@ -3,7 +3,7 @@ import Context from "../common/context";
 import { Store } from "../orm/store";
 import { Arguments, Data, DispatchFunction } from "../support/interfaces";
 import Model from "../orm/model";
-import RootState from "@vuex-orm/core/lib/modules/contracts/RootState";
+import { RootState } from "@vuex-orm/core/dist/src/modules/contracts/RootState";
 import Transformer from "../graphql/transformer";
 import Schema from "../graphql/schema";
 import { singularize, toPrimaryKey } from "../support/utils";

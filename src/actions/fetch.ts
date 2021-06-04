@@ -5,6 +5,7 @@ import Transformer from "../graphql/transformer";
 import { ActionParams, Data, PatchedModel } from "../support/interfaces";
 import Action from "./action";
 import { isPlainObject } from "../support/utils";
+import { ArgumentMode } from "../adapters/adapter";
 
 /**
  * Fetch action for sending a query. Will be used for Model.fetch().
@@ -70,7 +71,16 @@ export default class Fetch extends Action {
     const query = QueryBuilder.buildQuery("query", model, name, filter, multiple, multiple);
 
     // Send the request to the GraphQL API
-    const data = await context.apollo.request(model, query, filter, false, bypassCache as boolean);
+    const data = await context.apollo.request(
+      model,
+      query,
+      // @ts-ignore
+      Context.getInstance().adapter.getArgumentMode() === ArgumentMode.TYPE
+        ? filter
+        : filter?.filter,
+      false,
+      bypassCache as boolean
+    );
 
     // Insert incoming data into the store
     return Store.insertData(data, dispatch!);

@@ -139,13 +139,16 @@ export default class Model {
       relation instanceof context.components.MorphToMany ||
       relation instanceof context.components.HasOne
     ) {
+      // @ts-ignore
       return context.getModel(relation.related.entity, true);
     } else if (
       relation instanceof context.components.BelongsTo ||
       relation instanceof context.components.HasManyBy
     ) {
+      // @ts-ignore
       return context.getModel(relation.parent.entity, true);
     } else if (relation instanceof context.components.MorphTo) {
+      // @ts-ignore
       return context.getModel(relation.type, true);
     } else {
       console.warn("Failed relation", typeof relation, relation);
@@ -189,6 +192,7 @@ export default class Model {
       if (
         (relation instanceof context.components.BelongsTo ||
           relation instanceof context.components.HasOne) &&
+        // @ts-ignore
         relation.foreignKey === field
       ) {
         shouldSkipField = true;
@@ -238,6 +242,7 @@ export default class Model {
         ) {
           const related = (relation as Field).related;
 
+          // @ts-ignore
           if (relation.type === name && related && related.entity === this.baseModel.entity) {
             found = true;
             return false; // break

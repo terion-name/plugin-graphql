@@ -3,18 +3,18 @@
 Object.defineProperty(exports, '__esModule', { value: true });
 
 /*! *****************************************************************************
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-this file except in compliance with the License. You may obtain a copy of the
-License at http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) Microsoft Corporation.
 
-THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-MERCHANTABLITY OR NON-INFRINGEMENT.
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
 
-See the Apache Version 2.0 License for specific language governing permissions
-and limitations under the License.
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 /* global Reflect, Promise */
 
@@ -31,15 +31,15 @@ function __extends(d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
 
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
+var __assign$1 = function() {
+    __assign$1 = Object.assign || function __assign(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
             s = arguments[i];
             for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
         }
         return t;
     };
-    return __assign.apply(this, arguments);
+    return __assign$1.apply(this, arguments);
 };
 
 function __rest(s, e) {
@@ -102,7 +102,7 @@ function __spreadArrays() {
 
 var nodejsCustomInspectSymbol = typeof Symbol === 'function' && typeof Symbol.for === 'function' ? Symbol.for('nodejs.util.inspect.custom') : undefined;
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _typeof$1(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
 var MAX_ARRAY_LENGTH = 10;
 var MAX_RECURSIVE_DEPTH = 2;
 /**
@@ -114,7 +114,7 @@ function inspect(value) {
 }
 
 function formatValue(value, seenValues) {
-  switch (_typeof(value)) {
+  switch (_typeof$1(value)) {
     case 'string':
       return JSON.stringify(value);
 
@@ -248,14 +248,14 @@ function defineToJSON(classObject) {
   }
 }
 
-function _typeof$1(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof$1 = function _typeof(obj) { return typeof obj; }; } else { _typeof$1 = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof$1(obj); }
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**
  * Return true if `value` is object-like. A value is object-like if it's not
  * `null` and has a `typeof` result of "object".
  */
 function isObjectLike(value) {
-  return _typeof$1(value) == 'object' && value !== null;
+  return _typeof(value) == 'object' && value !== null;
 }
 
 /**
@@ -326,8 +326,8 @@ function printSourceLocation(source, sourceLocation) {
 
 function printPrefixedLines(lines) {
   var existingLines = lines.filter(function (_ref) {
-    var _ = _ref[0],
-        line = _ref[1];
+    _ref[0];
+        var line = _ref[1];
     return line !== undefined;
   });
   var padLen = Math.max.apply(Math, existingLines.map(function (_ref2) {
@@ -1397,42 +1397,6 @@ var DirectiveLocation = Object.freeze({
 function parse(source, options) {
   var parser = new Parser(source, options);
   return parser.parseDocument();
-}
-/**
- * Given a string containing a GraphQL value (ex. `[42]`), parse the AST for
- * that value.
- * Throws GraphQLError if a syntax error is encountered.
- *
- * This is useful within tools that operate upon GraphQL Values directly and
- * in isolation of complete GraphQL documents.
- *
- * Consider providing the results to the utility function: valueFromAST().
- */
-
-function parseValue(source, options) {
-  var parser = new Parser(source, options);
-  parser.expectToken(TokenKind.SOF);
-  var value = parser.parseValueLiteral(false);
-  parser.expectToken(TokenKind.EOF);
-  return value;
-}
-/**
- * Given a string containing a GraphQL Type (ex. `[Int!]`), parse the AST for
- * that type.
- * Throws GraphQLError if a syntax error is encountered.
- *
- * This is useful within tools that operate upon GraphQL Types directly and
- * in isolation of complete GraphQL documents.
- *
- * Consider providing the results to the utility function: typeFromAST().
- */
-
-function parseType(source, options) {
-  var parser = new Parser(source, options);
-  parser.expectToken(TokenKind.SOF);
-  var type = parser.parseTypeReference();
-  parser.expectToken(TokenKind.EOF);
-  return type;
 }
 
 var Parser =
@@ -2909,13 +2873,6 @@ function getTokenDesc(token) {
   return value ? "".concat(token.kind, " \"").concat(value, "\"") : token.kind;
 }
 
-var parser = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    parse: parse,
-    parseValue: parseValue,
-    parseType: parseType
-});
-
 var QueryDocumentKeys = {
   Name: [],
   Document: ['definitions'],
@@ -3266,7 +3223,7 @@ var printDocASTReducer = {
   OperationDefinition: function OperationDefinition(node) {
     var op = node.operation;
     var name = node.name;
-    var varDefs = wrap('(', join(node.variableDefinitions, ', '), ')');
+    var varDefs = wrap$1('(', join(node.variableDefinitions, ', '), ')');
     var directives = join(node.directives, ' ');
     var selectionSet = node.selectionSet; // Anonymous queries with no directives or variable definitions can use
     // the query short form.
@@ -3278,7 +3235,7 @@ var printDocASTReducer = {
         type = _ref.type,
         defaultValue = _ref.defaultValue,
         directives = _ref.directives;
-    return variable + ': ' + type + wrap(' = ', defaultValue) + wrap(' ', join(directives, ' '));
+    return variable + ': ' + type + wrap$1(' = ', defaultValue) + wrap$1(' ', join(directives, ' '));
   },
   SelectionSet: function SelectionSet(_ref2) {
     var selections = _ref2.selections;
@@ -3290,7 +3247,7 @@ var printDocASTReducer = {
         args = _ref3.arguments,
         directives = _ref3.directives,
         selectionSet = _ref3.selectionSet;
-    return join([wrap('', alias, ': ') + name + wrap('(', join(args, ', '), ')'), join(directives, ' '), selectionSet], ' ');
+    return join([wrap$1('', alias, ': ') + name + wrap$1('(', join(args, ', '), ')'), join(directives, ' '), selectionSet], ' ');
   },
   Argument: function Argument(_ref4) {
     var name = _ref4.name,
@@ -3301,13 +3258,13 @@ var printDocASTReducer = {
   FragmentSpread: function FragmentSpread(_ref5) {
     var name = _ref5.name,
         directives = _ref5.directives;
-    return '...' + name + wrap(' ', join(directives, ' '));
+    return '...' + name + wrap$1(' ', join(directives, ' '));
   },
   InlineFragment: function InlineFragment(_ref6) {
     var typeCondition = _ref6.typeCondition,
         directives = _ref6.directives,
         selectionSet = _ref6.selectionSet;
-    return join(['...', wrap('on ', typeCondition), join(directives, ' '), selectionSet], ' ');
+    return join(['...', wrap$1('on ', typeCondition), join(directives, ' '), selectionSet], ' ');
   },
   FragmentDefinition: function FragmentDefinition(_ref7) {
     var name = _ref7.name,
@@ -3317,7 +3274,7 @@ var printDocASTReducer = {
         selectionSet = _ref7.selectionSet;
     return (// Note: fragment variable definitions are experimental and may be changed
       // or removed in the future.
-      "fragment ".concat(name).concat(wrap('(', join(variableDefinitions, ', '), ')'), " ") + "on ".concat(typeCondition, " ").concat(wrap('', join(directives, ' '), ' ')) + selectionSet
+      "fragment ".concat(name).concat(wrap$1('(', join(variableDefinitions, ', '), ')'), " ") + "on ".concat(typeCondition, " ").concat(wrap$1('', join(directives, ' '), ' ')) + selectionSet
     );
   },
   // Value
@@ -3362,7 +3319,7 @@ var printDocASTReducer = {
   Directive: function Directive(_ref16) {
     var name = _ref16.name,
         args = _ref16.arguments;
-    return '@' + name + wrap('(', join(args, ', '), ')');
+    return '@' + name + wrap$1('(', join(args, ', '), ')');
   },
   // Type
   NamedType: function NamedType(_ref17) {
@@ -3398,21 +3355,21 @@ var printDocASTReducer = {
         interfaces = _ref23.interfaces,
         directives = _ref23.directives,
         fields = _ref23.fields;
-    return join(['type', name, wrap('implements ', join(interfaces, ' & ')), join(directives, ' '), block(fields)], ' ');
+    return join(['type', name, wrap$1('implements ', join(interfaces, ' & ')), join(directives, ' '), block(fields)], ' ');
   }),
   FieldDefinition: addDescription(function (_ref24) {
     var name = _ref24.name,
         args = _ref24.arguments,
         type = _ref24.type,
         directives = _ref24.directives;
-    return name + (hasMultilineItems(args) ? wrap('(\n', indent(join(args, '\n')), '\n)') : wrap('(', join(args, ', '), ')')) + ': ' + type + wrap(' ', join(directives, ' '));
+    return name + (hasMultilineItems(args) ? wrap$1('(\n', indent(join(args, '\n')), '\n)') : wrap$1('(', join(args, ', '), ')')) + ': ' + type + wrap$1(' ', join(directives, ' '));
   }),
   InputValueDefinition: addDescription(function (_ref25) {
     var name = _ref25.name,
         type = _ref25.type,
         defaultValue = _ref25.defaultValue,
         directives = _ref25.directives;
-    return join([name + ': ' + type, wrap('= ', defaultValue), join(directives, ' ')], ' ');
+    return join([name + ': ' + type, wrap$1('= ', defaultValue), join(directives, ' ')], ' ');
   }),
   InterfaceTypeDefinition: addDescription(function (_ref26) {
     var name = _ref26.name,
@@ -3448,7 +3405,7 @@ var printDocASTReducer = {
         args = _ref31.arguments,
         repeatable = _ref31.repeatable,
         locations = _ref31.locations;
-    return 'directive @' + name + (hasMultilineItems(args) ? wrap('(\n', indent(join(args, '\n')), '\n)') : wrap('(', join(args, ', '), ')')) + (repeatable ? ' repeatable' : '') + ' on ' + join(locations, ' | ');
+    return 'directive @' + name + (hasMultilineItems(args) ? wrap$1('(\n', indent(join(args, '\n')), '\n)') : wrap$1('(', join(args, ', '), ')')) + (repeatable ? ' repeatable' : '') + ' on ' + join(locations, ' | ');
   }),
   SchemaExtension: function SchemaExtension(_ref32) {
     var directives = _ref32.directives,
@@ -3465,7 +3422,7 @@ var printDocASTReducer = {
         interfaces = _ref34.interfaces,
         directives = _ref34.directives,
         fields = _ref34.fields;
-    return join(['extend type', name, wrap('implements ', join(interfaces, ' & ')), join(directives, ' '), block(fields)], ' ');
+    return join(['extend type', name, wrap$1('implements ', join(interfaces, ' & ')), join(directives, ' '), block(fields)], ' ');
   },
   InterfaceTypeExtension: function InterfaceTypeExtension(_ref35) {
     var name = _ref35.name,
@@ -3524,7 +3481,7 @@ function block(array) {
  */
 
 
-function wrap(start, maybeString, end) {
+function wrap$1(start, maybeString, end) {
   return maybeString ? start + maybeString + (end || '') : '';
 }
 
@@ -3548,10 +3505,6 @@ function unwrapExports (x) {
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
-}
-
-function getCjsExportFromNamespace (n) {
-	return n && n['default'] || n;
 }
 
 function commonjsRequire () {
@@ -3653,7 +3606,7 @@ var freeSelf = typeof self == 'object' && self && self.Object === Object && self
 var root = freeGlobal || freeSelf || Function('return this')();
 
 /** Detect free variable `exports`. */
-var freeExports =  exports && !exports.nodeType && exports;
+var freeExports = exports && !exports.nodeType && exports;
 
 /** Detect free variable `module`. */
 var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
@@ -5499,7 +5452,7 @@ var freeSelf = typeof self == 'object' && self && self.Object === Object && self
 var root = freeGlobal || freeSelf || Function('return this')();
 
 /** Detect free variable `exports`. */
-var freeExports =  exports && !exports.nodeType && exports;
+var freeExports = exports && !exports.nodeType && exports;
 
 /** Detect free variable `module`. */
 var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
@@ -7168,7 +7121,7 @@ function stubFalse() {
 module.exports = clone;
 });
 
-var pluralize = createCommonjsModule(function (module, exports) {
+var pluralize$1 = createCommonjsModule(function (module, exports) {
 /* global define */
 
 (function (root, pluralize) {
@@ -7656,8 +7609,8 @@ var pluralize = createCommonjsModule(function (module, exports) {
 });
 });
 
-var pluralize$1 = pluralize.plural;
-var singularize = pluralize.singular;
+var pluralize = pluralize$1.plural;
+var singularize = pluralize$1.singular;
 /**
  * Capitalizes the first letter of the given string.
  *
@@ -7900,7 +7853,7 @@ var Model = /** @class */ (function () {
         this.baseModel = baseModel;
         // Generate name variants
         this.singularName = this.baseModel["singularName"] || singularize(this.baseModel.entity);
-        this.pluralName = this.baseModel["pluralName"] || pluralize$1(this.baseModel.entity);
+        this.pluralName = this.baseModel["pluralName"] || pluralize(this.baseModel.entity);
         // Cache the fields of the model in this.fields
         var fields = this.baseModel.fields();
         Object.keys(fields).forEach(function (name) {
@@ -7974,13 +7927,16 @@ var Model = /** @class */ (function () {
             relation instanceof context.components.MorphOne ||
             relation instanceof context.components.MorphToMany ||
             relation instanceof context.components.HasOne) {
+            // @ts-ignore
             return context.getModel(relation.related.entity, true);
         }
         else if (relation instanceof context.components.BelongsTo ||
             relation instanceof context.components.HasManyBy) {
+            // @ts-ignore
             return context.getModel(relation.parent.entity, true);
         }
         else if (relation instanceof context.components.MorphTo) {
+            // @ts-ignore
             return context.getModel(relation.type, true);
         }
         else {
@@ -8020,6 +7976,7 @@ var Model = /** @class */ (function () {
         this.getRelations().forEach(function (relation) {
             if ((relation instanceof context.components.BelongsTo ||
                 relation instanceof context.components.HasOne) &&
+                // @ts-ignore
                 relation.foreignKey === field) {
                 shouldSkipField = true;
                 return false;
@@ -8060,6 +8017,7 @@ var Model = /** @class */ (function () {
                     relation instanceof context.components.MorphTo ||
                     relation instanceof context.components.MorphToMany) {
                     var related = relation.related;
+                    // @ts-ignore
                     if (relation.type === name && related && related.entity === _this.baseModel.entity) {
                         found = true;
                         return false; // break
@@ -8198,10 +8156,10 @@ var Model = /** @class */ (function () {
 }());
 
 var genericMessage = "Invariant Violation";
-var _a = Object.setPrototypeOf, setPrototypeOf = _a === void 0 ? function (obj, proto) {
+var _a$1 = Object.setPrototypeOf, setPrototypeOf = _a$1 === void 0 ? function (obj, proto) {
     obj.__proto__ = proto;
     return obj;
-} : _a;
+} : _a$1;
 var InvariantError = /** @class */ (function (_super) {
     __extends(InvariantError, _super);
     function InvariantError(message) {
@@ -8311,7 +8269,7 @@ var fastJsonStableStringify = function (data, opts) {
     })(data);
 };
 
-var _a$1 = Object.prototype, toString = _a$1.toString, hasOwnProperty = _a$1.hasOwnProperty;
+var _a = Object.prototype, toString$1 = _a.toString, hasOwnProperty$2 = _a.hasOwnProperty;
 var previousComparisons = new Map();
 /**
  * Performs a deep equality check on two JavaScript values, tolerating cycles.
@@ -8331,8 +8289,8 @@ function check(a, b) {
     }
     // Object.prototype.toString returns a representation of the runtime type of
     // the given value that is considerably more precise than typeof.
-    var aTag = toString.call(a);
-    var bTag = toString.call(b);
+    var aTag = toString$1.call(a);
+    var bTag = toString$1.call(b);
     // If the runtime types of a and b are different, they could maybe be equal
     // under some interpretation of equality, but for simplicity and performance
     // we just return false instead.
@@ -8358,7 +8316,7 @@ function check(a, b) {
                 return false;
             // Now make sure they have the same keys.
             for (var k = 0; k < keyCount; ++k) {
-                if (!hasOwnProperty.call(b, aKeys[k])) {
+                if (!hasOwnProperty$2.call(b, aKeys[k])) {
                     return false;
                 }
             }
@@ -8600,7 +8558,7 @@ function isIdValue(idObject) {
 }
 function toIdValue(idConfig, generated) {
     if (generated === void 0) { generated = false; }
-    return __assign({ type: 'id', generated: generated }, (typeof idConfig === 'string'
+    return __assign$1({ type: 'id', generated: generated }, (typeof idConfig === 'string'
         ? { id: idConfig, typename: undefined }
         : idConfig));
 }
@@ -8627,7 +8585,7 @@ function shouldInclude(selection, variables) {
         var evaledValue = false;
         if (ifArgument.value.kind === 'Variable') {
             evaledValue = variables[ifArgument.value.name.value];
-            process.env.NODE_ENV === "production" ? invariant(evaledValue !== void 0, 1) : invariant(evaledValue !== void 0, "Invalid variable referenced in @" + directive.name.value + " directive.");
+            process.env.NODE_ENV === "production" ? invariant(evaledValue !== void 0, 13) : invariant(evaledValue !== void 0, "Invalid variable referenced in @" + directive.name.value + " directive.");
         }
         else {
             evaledValue = ifArgument.value.value;
@@ -8660,12 +8618,12 @@ function getInclusionDirectives(directives) {
     return directives ? directives.filter(isInclusionDirective).map(function (directive) {
         var directiveArguments = directive.arguments;
         var directiveName = directive.name.value;
-        process.env.NODE_ENV === "production" ? invariant(directiveArguments && directiveArguments.length === 1, 2) : invariant(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @" + directiveName + " directive.");
+        process.env.NODE_ENV === "production" ? invariant(directiveArguments && directiveArguments.length === 1, 14) : invariant(directiveArguments && directiveArguments.length === 1, "Incorrect number of arguments for the @" + directiveName + " directive.");
         var ifArgument = directiveArguments[0];
-        process.env.NODE_ENV === "production" ? invariant(ifArgument.name && ifArgument.name.value === 'if', 3) : invariant(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @" + directiveName + " directive.");
+        process.env.NODE_ENV === "production" ? invariant(ifArgument.name && ifArgument.name.value === 'if', 15) : invariant(ifArgument.name && ifArgument.name.value === 'if', "Invalid argument for the @" + directiveName + " directive.");
         var ifValue = ifArgument.value;
         process.env.NODE_ENV === "production" ? invariant(ifValue &&
-            (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 4) : invariant(ifValue &&
+            (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), 16) : invariant(ifValue &&
             (ifValue.kind === 'Variable' || ifValue.kind === 'BooleanValue'), "Argument for the @" + directiveName + " directive must be a variable or a boolean value.");
         return { directive: directive, ifArgument: ifArgument };
     }) : [];
@@ -8676,7 +8634,7 @@ function getFragmentQueryDocument(document, fragmentName) {
     var fragments = [];
     document.definitions.forEach(function (definition) {
         if (definition.kind === 'OperationDefinition') {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(5) : new InvariantError("Found a " + definition.operation + " operation" + (definition.name ? " named '" + definition.name.value + "'" : '') + ". " +
+            throw process.env.NODE_ENV === "production" ? new InvariantError(11) : new InvariantError("Found a " + definition.operation + " operation" + (definition.name ? " named '" + definition.name.value + "'" : '') + ". " +
                 'No operations are allowed when using a fragment as a query. Only fragments are allowed.');
         }
         if (definition.kind === 'FragmentDefinition') {
@@ -8684,10 +8642,10 @@ function getFragmentQueryDocument(document, fragmentName) {
         }
     });
     if (typeof actualFragmentName === 'undefined') {
-        process.env.NODE_ENV === "production" ? invariant(fragments.length === 1, 6) : invariant(fragments.length === 1, "Found " + fragments.length + " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.");
+        process.env.NODE_ENV === "production" ? invariant(fragments.length === 1, 12) : invariant(fragments.length === 1, "Found " + fragments.length + " fragments. `fragmentName` must be provided when there is not exactly 1 fragment.");
         actualFragmentName = fragments[0].name.value;
     }
-    var query = __assign(__assign({}, document), { definitions: __spreadArrays([
+    var query = __assign$1(__assign$1({}, document), { definitions: __spreadArrays([
             {
                 kind: 'OperationDefinition',
                 operation: 'query',
@@ -8724,16 +8682,16 @@ function assign(target) {
     return target;
 }
 function checkDocument(doc) {
-    process.env.NODE_ENV === "production" ? invariant(doc && doc.kind === 'Document', 8) : invariant(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql");
+    process.env.NODE_ENV === "production" ? invariant(doc && doc.kind === 'Document', 2) : invariant(doc && doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql");
     var operations = doc.definitions
         .filter(function (d) { return d.kind !== 'FragmentDefinition'; })
         .map(function (definition) {
         if (definition.kind !== 'OperationDefinition') {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(9) : new InvariantError("Schema type definitions not allowed in queries. Found: \"" + definition.kind + "\"");
+            throw process.env.NODE_ENV === "production" ? new InvariantError(3) : new InvariantError("Schema type definitions not allowed in queries. Found: \"" + definition.kind + "\"");
         }
         return definition;
     });
-    process.env.NODE_ENV === "production" ? invariant(operations.length <= 1, 10) : invariant(operations.length <= 1, "Ambiguous GraphQL document: contains " + operations.length + " operations");
+    process.env.NODE_ENV === "production" ? invariant(operations.length <= 1, 4) : invariant(operations.length <= 1, "Ambiguous GraphQL document: contains " + operations.length + " operations");
     return doc;
 }
 function getOperationDefinition(doc) {
@@ -8752,14 +8710,14 @@ function getFragmentDefinitions(doc) {
 }
 function getQueryDefinition(doc) {
     var queryDef = getOperationDefinition(doc);
-    process.env.NODE_ENV === "production" ? invariant(queryDef && queryDef.operation === 'query', 12) : invariant(queryDef && queryDef.operation === 'query', 'Must contain a query definition.');
+    process.env.NODE_ENV === "production" ? invariant(queryDef && queryDef.operation === 'query', 6) : invariant(queryDef && queryDef.operation === 'query', 'Must contain a query definition.');
     return queryDef;
 }
 function getFragmentDefinition(doc) {
-    process.env.NODE_ENV === "production" ? invariant(doc.kind === 'Document', 13) : invariant(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql");
-    process.env.NODE_ENV === "production" ? invariant(doc.definitions.length <= 1, 14) : invariant(doc.definitions.length <= 1, 'Fragment must have exactly one definition.');
+    process.env.NODE_ENV === "production" ? invariant(doc.kind === 'Document', 7) : invariant(doc.kind === 'Document', "Expecting a parsed GraphQL document. Perhaps you need to wrap the query string in a \"gql\" tag? http://docs.apollostack.com/apollo-client/core.html#gql");
+    process.env.NODE_ENV === "production" ? invariant(doc.definitions.length <= 1, 8) : invariant(doc.definitions.length <= 1, 'Fragment must have exactly one definition.');
     var fragmentDef = doc.definitions[0];
-    process.env.NODE_ENV === "production" ? invariant(fragmentDef.kind === 'FragmentDefinition', 15) : invariant(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.');
+    process.env.NODE_ENV === "production" ? invariant(fragmentDef.kind === 'FragmentDefinition', 9) : invariant(fragmentDef.kind === 'FragmentDefinition', 'Must be a fragment definition.');
     return fragmentDef;
 }
 function getMainDefinition(queryDoc) {
@@ -8782,7 +8740,7 @@ function getMainDefinition(queryDoc) {
     if (fragmentDefinition) {
         return fragmentDefinition;
     }
-    throw process.env.NODE_ENV === "production" ? new InvariantError(16) : new InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.');
+    throw process.env.NODE_ENV === "production" ? new InvariantError(10) : new InvariantError('Expected a parsed GraphQL query with a query, mutation, subscription, or a fragment.');
 }
 function createFragmentMap(fragments) {
     if (fragments === void 0) { fragments = []; }
@@ -8940,7 +8898,7 @@ function addTypenameToDocument(doc) {
                     field.directives.some(function (d) { return d.name.value === 'export'; })) {
                     return;
                 }
-                return __assign(__assign({}, node), { selections: __spreadArrays(selections, [TYPENAME_FIELD]) });
+                return __assign$1(__assign$1({}, node), { selections: __spreadArrays(selections, [TYPENAME_FIELD]) });
             },
         },
     });
@@ -8977,7 +8935,7 @@ function removeArgumentsFromDocument(config, doc) {
     return nullIfDocIsEmpty(visit(doc, {
         OperationDefinition: {
             enter: function (node) {
-                return __assign(__assign({}, node), { variableDefinitions: node.variableDefinitions.filter(function (varDef) {
+                return __assign$1(__assign$1({}, node), { variableDefinitions: node.variableDefinitions.filter(function (varDef) {
                         return !config.some(function (arg) { return arg.name === varDef.variable.name.value; });
                     }) });
             },
@@ -9040,7 +8998,7 @@ function buildQueryFromSelectionSet(document) {
     var modifiedDoc = visit(document, {
         OperationDefinition: {
             enter: function (node) {
-                return __assign(__assign({}, node), { operation: 'query' });
+                return __assign$1(__assign$1({}, node), { operation: 'query' });
             },
         },
     });
@@ -9076,12 +9034,12 @@ function removeClientSetsFromDocument(document) {
 var canUseWeakMap = typeof WeakMap === 'function' && !(typeof navigator === 'object' &&
     navigator.product === 'ReactNative');
 
-var toString$1 = Object.prototype.toString;
+var toString = Object.prototype.toString;
 function cloneDeep(value) {
     return cloneDeepHelper(value, new Map());
 }
 function cloneDeepHelper(val, seen) {
-    switch (toString$1.call(val)) {
+    switch (toString.call(val)) {
         case "[object Array]": {
             if (seen.has(val))
                 return seen.get(val);
@@ -9213,7 +9171,7 @@ function shallowCopyForMerge(value, pastCopies) {
             value = value.slice(0);
         }
         else {
-            value = __assign({ __proto__: Object.getPrototypeOf(value) }, value);
+            value = __assign$1({ __proto__: Object.getPrototypeOf(value) }, value);
         }
         pastCopies.push(value);
     }
@@ -9840,11 +9798,11 @@ if (hasSymbols()) {
 });
 
 unwrapExports(Observable_1);
-var Observable_2 = Observable_1.Observable;
+Observable_1.Observable;
 
 var zenObservable = Observable_1.Observable;
 
-var Observable = zenObservable;
+var Observable$1 = zenObservable;
 
 function validateOperation(operation) {
     var OPERATION_FIELDS = [
@@ -9875,7 +9833,7 @@ function isTerminating(link) {
     return link.request.length <= 1;
 }
 function fromError(errorValue) {
-    return new Observable(function (observer) {
+    return new Observable$1(function (observer) {
         observer.error(errorValue);
     });
 }
@@ -9895,16 +9853,16 @@ function transformOperation(operation) {
     return transformedOperation;
 }
 function createOperation(starting, operation) {
-    var context = __assign({}, starting);
+    var context = __assign$1({}, starting);
     var setContext = function (next) {
         if (typeof next === 'function') {
-            context = __assign({}, context, next(context));
+            context = __assign$1({}, context, next(context));
         }
         else {
-            context = __assign({}, context, next);
+            context = __assign$1({}, context, next);
         }
     };
-    var getContext = function () { return (__assign({}, context)); };
+    var getContext = function () { return (__assign$1({}, context)); };
     Object.defineProperty(operation, 'setContext', {
         enumerable: false,
         value: setContext,
@@ -9925,13 +9883,13 @@ function getKey(operation) {
 }
 
 function passthrough(op, forward) {
-    return forward ? forward(op) : Observable.of();
+    return forward ? forward(op) : Observable$1.of();
 }
 function toLink(handler) {
     return typeof handler === 'function' ? new ApolloLink(handler) : handler;
 }
 function empty() {
-    return new ApolloLink(function () { return Observable.of(); });
+    return new ApolloLink(function () { return Observable$1.of(); });
 }
 function from(links) {
     if (links.length === 0)
@@ -9944,15 +9902,15 @@ function split(test, left, right) {
     if (isTerminating(leftLink) && isTerminating(rightLink)) {
         return new ApolloLink(function (operation) {
             return test(operation)
-                ? leftLink.request(operation) || Observable.of()
-                : rightLink.request(operation) || Observable.of();
+                ? leftLink.request(operation) || Observable$1.of()
+                : rightLink.request(operation) || Observable$1.of();
         });
     }
     else {
         return new ApolloLink(function (operation, forward) {
             return test(operation)
-                ? leftLink.request(operation, forward) || Observable.of()
-                : rightLink.request(operation, forward) || Observable.of();
+                ? leftLink.request(operation, forward) || Observable$1.of()
+                : rightLink.request(operation, forward) || Observable$1.of();
         });
     }
 }
@@ -9965,14 +9923,14 @@ var concat = function (first, second) {
     var nextLink = toLink(second);
     if (isTerminating(nextLink)) {
         return new ApolloLink(function (operation) {
-            return firstLink.request(operation, function (op) { return nextLink.request(op) || Observable.of(); }) || Observable.of();
+            return firstLink.request(operation, function (op) { return nextLink.request(op) || Observable$1.of(); }) || Observable$1.of();
         });
     }
     else {
         return new ApolloLink(function (operation, forward) {
             return (firstLink.request(operation, function (op) {
-                return nextLink.request(op, forward) || Observable.of();
-            }) || Observable.of());
+                return nextLink.request(op, forward) || Observable$1.of();
+            }) || Observable$1.of());
         });
     }
 };
@@ -9997,7 +9955,7 @@ var ApolloLink = (function () {
     return ApolloLink;
 }());
 function execute(link, operation) {
-    return (link.request(createOperation(operation.context, transformOperation(validateOperation(operation)))) || Observable.of());
+    return (link.request(createOperation(operation.context, transformOperation(validateOperation(operation)))) || Observable$1.of());
 }
 
 function symbolObservablePonyfill(root) {
@@ -10050,7 +10008,7 @@ function isNetworkRequestInFlight(networkStatus) {
     return networkStatus < 7;
 }
 
-var Observable$1 = (function (_super) {
+var Observable = (function (_super) {
     __extends(Observable, _super);
     function Observable() {
         return _super !== null && _super.apply(this, arguments) || this;
@@ -10062,7 +10020,7 @@ var Observable$1 = (function (_super) {
         return this;
     };
     return Observable;
-}(Observable));
+}(Observable$1));
 
 function isNonEmptyArray(value) {
     return Array.isArray(value) && value.length > 0;
@@ -10194,7 +10152,7 @@ var ObservableQuery = (function (_super) {
                 };
             }
             if (queryStoreValue.variables) {
-                this.options.variables = __assign(__assign({}, this.options.variables), queryStoreValue.variables);
+                this.options.variables = __assign$1(__assign$1({}, this.options.variables), queryStoreValue.variables);
                 this.variables = this.options.variables;
             }
             result = {
@@ -10216,9 +10174,9 @@ var ObservableQuery = (function (_super) {
             };
         }
         if (!partial) {
-            this.updateLastResult(__assign(__assign({}, result), { stale: false }));
+            this.updateLastResult(__assign$1(__assign$1({}, result), { stale: false }));
         }
-        return __assign(__assign({}, result), { partial: partial });
+        return __assign$1(__assign$1({}, result), { partial: partial });
     };
     ObservableQuery.prototype.isDifferentFromLastResult = function (newResult) {
         var snapshot = this.lastResultSnapshot;
@@ -10250,24 +10208,24 @@ var ObservableQuery = (function (_super) {
     ObservableQuery.prototype.refetch = function (variables) {
         var fetchPolicy = this.options.fetchPolicy;
         if (fetchPolicy === 'cache-only') {
-            return Promise.reject(process.env.NODE_ENV === "production" ? new InvariantError(3) : new InvariantError('cache-only fetchPolicy option should not be used together with query refetch.'));
+            return Promise.reject(process.env.NODE_ENV === "production" ? new InvariantError(1) : new InvariantError('cache-only fetchPolicy option should not be used together with query refetch.'));
         }
         if (fetchPolicy !== 'no-cache' &&
             fetchPolicy !== 'cache-and-network') {
             fetchPolicy = 'network-only';
         }
         if (!equal(this.variables, variables)) {
-            this.variables = __assign(__assign({}, this.variables), variables);
+            this.variables = __assign$1(__assign$1({}, this.variables), variables);
         }
         if (!equal(this.options.variables, this.variables)) {
-            this.options.variables = __assign(__assign({}, this.options.variables), this.variables);
+            this.options.variables = __assign$1(__assign$1({}, this.options.variables), this.variables);
         }
-        return this.queryManager.fetchQuery(this.queryId, __assign(__assign({}, this.options), { fetchPolicy: fetchPolicy }), FetchType.refetch);
+        return this.queryManager.fetchQuery(this.queryId, __assign$1(__assign$1({}, this.options), { fetchPolicy: fetchPolicy }), FetchType.refetch);
     };
     ObservableQuery.prototype.fetchMore = function (fetchMoreOptions) {
         var _this = this;
-        process.env.NODE_ENV === "production" ? invariant(fetchMoreOptions.updateQuery, 4) : invariant(fetchMoreOptions.updateQuery, 'updateQuery option is required. This function defines how to update the query data with the new results.');
-        var combinedOptions = __assign(__assign({}, (fetchMoreOptions.query ? fetchMoreOptions : __assign(__assign(__assign({}, this.options), fetchMoreOptions), { variables: __assign(__assign({}, this.variables), fetchMoreOptions.variables) }))), { fetchPolicy: 'network-only' });
+        process.env.NODE_ENV === "production" ? invariant(fetchMoreOptions.updateQuery, 2) : invariant(fetchMoreOptions.updateQuery, 'updateQuery option is required. This function defines how to update the query data with the new results.');
+        var combinedOptions = __assign$1(__assign$1({}, (fetchMoreOptions.query ? fetchMoreOptions : __assign$1(__assign$1(__assign$1({}, this.options), fetchMoreOptions), { variables: __assign$1(__assign$1({}, this.variables), fetchMoreOptions.variables) }))), { fetchPolicy: 'network-only' });
         var qid = this.queryManager.generateQueryId();
         return this.queryManager
             .fetchQuery(qid, combinedOptions, FetchType.normal, this.queryId)
@@ -10322,7 +10280,7 @@ var ObservableQuery = (function (_super) {
     };
     ObservableQuery.prototype.setOptions = function (opts) {
         var oldFetchPolicy = this.options.fetchPolicy;
-        this.options = __assign(__assign({}, this.options), opts);
+        this.options = __assign$1(__assign$1({}, this.options), opts);
         if (opts.pollInterval) {
             this.startPolling(opts.pollInterval);
         }
@@ -10413,7 +10371,7 @@ var ObservableQuery = (function (_super) {
             queryManager.startPollingQuery(this.options, queryId);
         }
         var onError = function (error) {
-            _this.updateLastResult(__assign(__assign({}, _this.lastResult), { errors: error.graphQLErrors, networkStatus: NetworkStatus.error, loading: false }));
+            _this.updateLastResult(__assign$1(__assign$1({}, _this.lastResult), { errors: error.graphQLErrors, networkStatus: NetworkStatus.error, loading: false }));
             iterateObserversSafely(_this.observers, 'error', _this.lastError = error);
         };
         queryManager.observeQuery(queryId, this.options, {
@@ -10456,7 +10414,7 @@ var ObservableQuery = (function (_super) {
         this.observers.clear();
     };
     return ObservableQuery;
-}(Observable$1));
+}(Observable));
 function defaultSubscriptionObserverErrorCallback(error) {
     process.env.NODE_ENV === "production" || invariant.error('Unhandled error', error.message, error.stack);
 }
@@ -10467,7 +10425,7 @@ function iterateObserversSafely(observers, method, argument) {
 }
 function assertNotCacheFirstOrOnly(obsQuery) {
     var fetchPolicy = obsQuery.options.fetchPolicy;
-    process.env.NODE_ENV === "production" ? invariant(fetchPolicy !== 'cache-first' && fetchPolicy !== 'cache-only', 5) : invariant(fetchPolicy !== 'cache-first' && fetchPolicy !== 'cache-only', 'Queries that specify the cache-first and cache-only fetchPolicies cannot also be polling queries.');
+    process.env.NODE_ENV === "production" ? invariant(fetchPolicy !== 'cache-first' && fetchPolicy !== 'cache-only', 3) : invariant(fetchPolicy !== 'cache-first' && fetchPolicy !== 'cache-only', 'Queries that specify the cache-first and cache-only fetchPolicies cannot also be polling queries.');
 }
 
 var MutationStore = (function () {
@@ -10657,7 +10615,7 @@ var LocalState = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_c) {
                 if (document) {
-                    return [2, this.resolveDocument(document, remoteResult.data, context, variables, this.fragmentMatcher, onlyRunForcedResolvers).then(function (localResult) { return (__assign(__assign({}, remoteResult), { data: localResult.result })); })];
+                    return [2, this.resolveDocument(document, remoteResult.data, context, variables, this.fragmentMatcher, onlyRunForcedResolvers).then(function (localResult) { return (__assign$1(__assign$1({}, remoteResult), { data: localResult.result })); })];
                 }
                 return [2, remoteResult];
             });
@@ -10687,7 +10645,7 @@ var LocalState = (function () {
     LocalState.prototype.prepareContext = function (context) {
         if (context === void 0) { context = {}; }
         var cache = this.cache;
-        var newContext = __assign(__assign({}, context), { cache: cache, getCacheKey: function (obj) {
+        var newContext = __assign$1(__assign$1({}, context), { cache: cache, getCacheKey: function (obj) {
                 if (cache.config) {
                     return cache.config.dataIdFromObject(obj);
                 }
@@ -10704,9 +10662,9 @@ var LocalState = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 if (document) {
-                    return [2, this.resolveDocument(document, this.buildRootValueFromCache(document, variables) || {}, this.prepareContext(context), variables).then(function (data) { return (__assign(__assign({}, variables), data.exportedVariables)); })];
+                    return [2, this.resolveDocument(document, this.buildRootValueFromCache(document, variables) || {}, this.prepareContext(context), variables).then(function (data) { return (__assign$1(__assign$1({}, variables), data.exportedVariables)); })];
                 }
-                return [2, __assign({}, variables)];
+                return [2, __assign$1({}, variables)];
             });
         });
     };
@@ -10757,7 +10715,7 @@ var LocalState = (function () {
                 _a = this, cache = _a.cache, client = _a.client;
                 execContext = {
                     fragmentMap: fragmentMap,
-                    context: __assign(__assign({}, context), { cache: cache,
+                    context: __assign$1(__assign$1({}, context), { cache: cache,
                         client: client }),
                     variables: variables,
                     fragmentMatcher: fragmentMatcher,
@@ -10890,7 +10848,7 @@ var LocalState = (function () {
 function multiplex(inner) {
     var observers = new Set();
     var sub = null;
-    return new Observable$1(function (observer) {
+    return new Observable(function (observer) {
         observers.add(observer);
         sub = sub || inner.subscribe({
             next: function (value) {
@@ -10912,7 +10870,7 @@ function multiplex(inner) {
     });
 }
 function asyncMap(observable, mapFn) {
-    return new Observable$1(function (observer) {
+    return new Observable(function (observer) {
         var next = observer.next, error = observer.error, complete = observer.complete;
         var activeNextCount = 0;
         var completed = false;
@@ -10945,7 +10903,7 @@ function asyncMap(observable, mapFn) {
     });
 }
 
-var hasOwnProperty$2 = Object.prototype.hasOwnProperty;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
 var QueryManager = (function () {
     function QueryManager(_a) {
         var link = _a.link, _b = _a.queryDeduplication, queryDeduplication = _b === void 0 ? false : _b, store = _a.store, _c = _a.onBroadcast, onBroadcast = _c === void 0 ? function () { return undefined; } : _c, _d = _a.ssrMode, ssrMode = _d === void 0 ? false : _d, _e = _a.clientAwareness, clientAwareness = _e === void 0 ? {} : _e, localState = _a.localState, assumeImmutableResults = _a.assumeImmutableResults;
@@ -11004,7 +10962,7 @@ var QueryManager = (function () {
                                     if (observableQuery) {
                                         var queryName = observableQuery.queryName;
                                         if (queryName &&
-                                            hasOwnProperty$2.call(updateQueriesByName, queryName)) {
+                                            hasOwnProperty.call(updateQueriesByName, queryName)) {
                                             ret[queryId] = {
                                                 updater: updateQueriesByName[queryName],
                                                 query: _this.queryStore.get(queryId),
@@ -11029,7 +10987,7 @@ var QueryManager = (function () {
                         return [2, new Promise(function (resolve, reject) {
                                 var storeResult;
                                 var error;
-                                self.getObservableFromLink(mutation, __assign(__assign({}, context), { optimisticResponse: optimisticResponse }), variables, false).subscribe({
+                                self.getObservableFromLink(mutation, __assign$1(__assign$1({}, context), { optimisticResponse: optimisticResponse }), variables, false).subscribe({
                                     next: function (result) {
                                         if (graphQLResultHasError(result) && errorPolicy === 'none') {
                                             error = new ApolloError({
@@ -11135,7 +11093,7 @@ var QueryManager = (function () {
                         variables = _e.sent();
                         _e.label = 2;
                     case 2:
-                        options = __assign(__assign({}, options), { variables: variables });
+                        options = __assign$1(__assign$1({}, options), { variables: variables });
                         isNetworkOnly = fetchPolicy === 'network-only' || fetchPolicy === 'no-cache';
                         needToFetch = isNetworkOnly;
                         if (!isNetworkOnly) {
@@ -11358,7 +11316,7 @@ var QueryManager = (function () {
         return transformCache.get(document);
     };
     QueryManager.prototype.getVariables = function (document, variables) {
-        return __assign(__assign({}, this.transform(document).defaultVars), variables);
+        return __assign$1(__assign$1({}, this.transform(document).defaultVars), variables);
     };
     QueryManager.prototype.watchQuery = function (options, shouldSubscribe) {
         if (shouldSubscribe === void 0) { shouldSubscribe = true; }
@@ -11367,7 +11325,7 @@ var QueryManager = (function () {
         if (typeof options.notifyOnNetworkStatusChange === 'undefined') {
             options.notifyOnNetworkStatusChange = false;
         }
-        var transformedOptions = __assign({}, options);
+        var transformedOptions = __assign$1({}, options);
         return new ObservableQuery({
             queryManager: this,
             options: transformedOptions,
@@ -11518,7 +11476,7 @@ var QueryManager = (function () {
         };
         if (this.transform(query).hasClientExports) {
             var observablePromise_1 = this.localState.addExportedVariables(query, variables).then(makeObservable);
-            return new Observable$1(function (observer) {
+            return new Observable(function (observer) {
                 var sub = null;
                 observablePromise_1.then(function (observable) { return sub = observable.subscribe(observer); }, observer.error);
                 return function () { return sub && sub.unsubscribe(); };
@@ -11607,7 +11565,7 @@ var QueryManager = (function () {
                 query: serverQuery,
                 variables: variables,
                 operationName: getOperationName(serverQuery) || void 0,
-                context: this.prepareContext(__assign(__assign({}, context), { forceFetch: !deduplication })),
+                context: this.prepareContext(__assign$1(__assign$1({}, context), { forceFetch: !deduplication })),
             };
             context = operation.context;
             if (deduplication) {
@@ -11635,7 +11593,7 @@ var QueryManager = (function () {
             }
         }
         else {
-            observable = Observable$1.of({ data: {} });
+            observable = Observable.of({ data: {} });
             context = this.prepareContext(context);
         }
         var clientQuery = this.transform(query).clientQuery;
@@ -11733,7 +11691,7 @@ var QueryManager = (function () {
     };
     QueryManager.prototype.setQuery = function (queryId, updater) {
         var prev = this.getQuery(queryId);
-        var newInfo = __assign(__assign({}, prev), updater(prev));
+        var newInfo = __assign$1(__assign$1({}, prev), updater(prev));
         this.queries.set(queryId, newInfo);
     };
     QueryManager.prototype.invalidate = function (queryId, invalidated) {
@@ -11745,7 +11703,7 @@ var QueryManager = (function () {
     QueryManager.prototype.prepareContext = function (context) {
         if (context === void 0) { context = {}; }
         var newContext = this.localState.prepareContext(context);
-        return __assign(__assign({}, newContext), { clientAwareness: this.clientAwareness });
+        return __assign$1(__assign$1({}, newContext), { clientAwareness: this.clientAwareness });
     };
     QueryManager.prototype.checkInFlight = function (queryId) {
         var query = this.queryStore.get(queryId);
@@ -11763,7 +11721,7 @@ var QueryManager = (function () {
                 this.pollingInfoByQueryId.set(queryId, (info = {}));
             }
             info.interval = pollInterval;
-            info.options = __assign(__assign({}, options), { fetchPolicy: 'network-only' });
+            info.options = __assign$1(__assign$1({}, options), { fetchPolicy: 'network-only' });
             var maybeFetch_1 = function () {
                 var info = _this.pollingInfoByQueryId.get(queryId);
                 if (info) {
@@ -11923,7 +11881,7 @@ var DataStore = (function () {
     return DataStore;
 }());
 
-var version = "2.6.8";
+var version = "2.6.10";
 
 var hasSuggestedDevtools = false;
 var ApolloClient = (function () {
@@ -11938,7 +11896,7 @@ var ApolloClient = (function () {
             link = ApolloLink.empty();
         }
         if (!link || !cache) {
-            throw process.env.NODE_ENV === "production" ? new InvariantError(1) : new InvariantError("In order to initialize Apollo Client, you must specify 'link' and 'cache' properties in the options object.\n" +
+            throw process.env.NODE_ENV === "production" ? new InvariantError(4) : new InvariantError("In order to initialize Apollo Client, you must specify 'link' and 'cache' properties in the options object.\n" +
                 "These options are part of the upgrade requirements when migrating from Apollo Client 1.x to Apollo Client 2.x.\n" +
                 "For more information, please visit: https://www.apollographql.com/docs/tutorial/client.html#apollo-client-setup");
         }
@@ -12018,31 +11976,31 @@ var ApolloClient = (function () {
     };
     ApolloClient.prototype.watchQuery = function (options) {
         if (this.defaultOptions.watchQuery) {
-            options = __assign(__assign({}, this.defaultOptions.watchQuery), options);
+            options = __assign$1(__assign$1({}, this.defaultOptions.watchQuery), options);
         }
         if (this.disableNetworkFetches &&
             (options.fetchPolicy === 'network-only' ||
                 options.fetchPolicy === 'cache-and-network')) {
-            options = __assign(__assign({}, options), { fetchPolicy: 'cache-first' });
+            options = __assign$1(__assign$1({}, options), { fetchPolicy: 'cache-first' });
         }
         return this.queryManager.watchQuery(options);
     };
     ApolloClient.prototype.query = function (options) {
         if (this.defaultOptions.query) {
-            options = __assign(__assign({}, this.defaultOptions.query), options);
+            options = __assign$1(__assign$1({}, this.defaultOptions.query), options);
         }
-        process.env.NODE_ENV === "production" ? invariant(options.fetchPolicy !== 'cache-and-network', 2) : invariant(options.fetchPolicy !== 'cache-and-network', 'The cache-and-network fetchPolicy does not work with client.query, because ' +
+        process.env.NODE_ENV === "production" ? invariant(options.fetchPolicy !== 'cache-and-network', 5) : invariant(options.fetchPolicy !== 'cache-and-network', 'The cache-and-network fetchPolicy does not work with client.query, because ' +
             'client.query can only return a single result. Please use client.watchQuery ' +
             'to receive multiple results from the cache and the network, or consider ' +
             'using a different fetchPolicy, such as cache-first or network-only.');
         if (this.disableNetworkFetches && options.fetchPolicy === 'network-only') {
-            options = __assign(__assign({}, options), { fetchPolicy: 'cache-first' });
+            options = __assign$1(__assign$1({}, options), { fetchPolicy: 'cache-first' });
         }
         return this.queryManager.query(options);
     };
     ApolloClient.prototype.mutate = function (options) {
         if (this.defaultOptions.mutate) {
-            options = __assign(__assign({}, this.defaultOptions.mutate), options);
+            options = __assign$1(__assign$1({}, this.defaultOptions.mutate), options);
         }
         return this.queryManager.mutate(options);
     };
@@ -12438,7 +12396,7 @@ var Slot = host[globalKey] || function () {
     }
 }();
 
-var bind = Slot.bind, noContext = Slot.noContext;
+Slot.bind; Slot.noContext;
 
 function defaultDispose() { }
 var Cache = /** @class */ (function () {
@@ -12856,7 +12814,7 @@ function defaultMakeCacheKey() {
     return keyTrie.lookupArray(args);
 }
 var caches = new Set();
-function wrap$1(originalFunction, options) {
+function wrap(originalFunction, options) {
     if (options === void 0) { options = Object.create(null); }
     var cache = new Cache(options.max || Math.pow(2, 16), function (entry) { return entry.dispose(); });
     var disposable = !!options.disposable;
@@ -12968,7 +12926,7 @@ var DepTrackingCache = (function () {
         var _this = this;
         if (data === void 0) { data = Object.create(null); }
         this.data = data;
-        this.depend = wrap$1(function (dataId) { return _this.data[dataId]; }, {
+        this.depend = wrap(function (dataId) { return _this.data[dataId]; }, {
             disposable: true,
             makeCacheKey: function (dataId) {
                 return dataId;
@@ -13028,7 +12986,7 @@ var StoreReader = (function () {
         var _b = _a === void 0 ? {} : _a, _c = _b.cacheKeyRoot, cacheKeyRoot = _c === void 0 ? new KeyTrie(canUseWeakMap) : _c, _d = _b.freezeResults, freezeResults = _d === void 0 ? false : _d;
         var _e = this, executeStoreQuery = _e.executeStoreQuery, executeSelectionSet = _e.executeSelectionSet, executeSubSelectedArray = _e.executeSubSelectedArray;
         this.freezeResults = freezeResults;
-        this.executeStoreQuery = wrap$1(function (options) {
+        this.executeStoreQuery = wrap(function (options) {
             return executeStoreQuery.call(_this, options);
         }, {
             makeCacheKey: function (_a) {
@@ -13038,7 +12996,7 @@ var StoreReader = (function () {
                 }
             }
         });
-        this.executeSelectionSet = wrap$1(function (options) {
+        this.executeSelectionSet = wrap(function (options) {
             return executeSelectionSet.call(_this, options);
         }, {
             makeCacheKey: function (_a) {
@@ -13048,7 +13006,7 @@ var StoreReader = (function () {
                 }
             }
         });
-        this.executeSubSelectedArray = wrap$1(function (options) {
+        this.executeSubSelectedArray = wrap(function (options) {
             return executeSubSelectedArray.call(_this, options);
         }, {
             makeCacheKey: function (_a) {
@@ -13060,7 +13018,7 @@ var StoreReader = (function () {
         });
     }
     StoreReader.prototype.readQueryFromStore = function (options) {
-        return this.diffQueryAgainstStore(__assign(__assign({}, options), { returnPartialData: false })).result;
+        return this.diffQueryAgainstStore(__assign$1(__assign$1({}, options), { returnPartialData: false })).result;
     };
     StoreReader.prototype.diffQueryAgainstStore = function (_a) {
         var store = _a.store, query = _a.query, variables = _a.variables, previousResult = _a.previousResult, _b = _a.returnPartialData, returnPartialData = _b === void 0 ? true : _b, _c = _a.rootId, rootId = _c === void 0 ? 'ROOT_QUERY' : _c, fragmentMatcherFunction = _a.fragmentMatcherFunction, config = _a.config;
@@ -13171,8 +13129,8 @@ var StoreReader = (function () {
                         execContext: execContext,
                     });
                     if (match === 'heuristic' && fragmentExecResult.missing) {
-                        fragmentExecResult = __assign(__assign({}, fragmentExecResult), { missing: fragmentExecResult.missing.map(function (info) {
-                                return __assign(__assign({}, info), { tolerable: true });
+                        fragmentExecResult = __assign$1(__assign$1({}, fragmentExecResult), { missing: fragmentExecResult.missing.map(function (info) {
+                                return __assign$1(__assign$1({}, info), { tolerable: true });
                             }) });
                     }
                     objectsToMerge.push(handleMissing(fragmentExecResult));
@@ -13282,7 +13240,7 @@ function defaultFragmentMatcher() {
     return true;
 }
 function readStoreResolver(object, typename, fieldName, args, context, _a) {
-    var resultKey = _a.resultKey, directives = _a.directives;
+    _a.resultKey; var directives = _a.directives;
     var storeKeyName = fieldName;
     if (args || directives) {
         storeKeyName = getStoreKeyName(storeKeyName, args, directives);
@@ -13445,7 +13403,7 @@ var StoreWriter = (function () {
                 }
                 else {
                     fragment = (fragmentMap || {})[selection.name.value];
-                    process.env.NODE_ENV === "production" ? invariant(fragment, 4) : invariant(fragment, "No fragment named " + selection.name.value + ".");
+                    process.env.NODE_ENV === "production" ? invariant(fragment, 3) : invariant(fragment, "No fragment named " + selection.name.value + ".");
                 }
                 var matches = true;
                 if (context.fragmentMatcherFunction && fragment.typeCondition) {
@@ -13500,7 +13458,7 @@ var StoreWriter = (function () {
             }
             if (dataIdFromObject) {
                 var semanticId = dataIdFromObject(value);
-                process.env.NODE_ENV === "production" ? invariant(!semanticId || !isGeneratedId(semanticId), 5) : invariant(!semanticId || !isGeneratedId(semanticId), 'IDs returned by dataIdFromObject cannot begin with the "$" character.');
+                process.env.NODE_ENV === "production" ? invariant(!semanticId || !isGeneratedId(semanticId), 4) : invariant(!semanticId || !isGeneratedId(semanticId), 'IDs returned by dataIdFromObject cannot begin with the "$" character.');
                 if (semanticId ||
                     (typeof semanticId === 'number' && semanticId === 0)) {
                     valueDataId = semanticId;
@@ -13523,8 +13481,8 @@ var StoreWriter = (function () {
                 var hadTypename = escapedId.typename !== undefined;
                 var hasTypename = typename !== undefined;
                 var typenameChanged = hadTypename && hasTypename && escapedId.typename !== typename;
-                process.env.NODE_ENV === "production" ? invariant(!generated || escapedId.generated || typenameChanged, 6) : invariant(!generated || escapedId.generated || typenameChanged, "Store error: the application attempted to write an object with no provided id but the store already contains an id of " + escapedId.id + " for this object. The selectionSet that was trying to be written is:\n" + JSON.stringify(field));
-                process.env.NODE_ENV === "production" ? invariant(!hadTypename || hasTypename, 7) : invariant(!hadTypename || hasTypename, "Store error: the application attempted to write an object with no provided typename but the store already contains an object with typename of " + escapedId.typename + " for the object of id " + escapedId.id + ". The selectionSet that was trying to be written is:\n" + JSON.stringify(field));
+                process.env.NODE_ENV === "production" ? invariant(!generated || escapedId.generated || typenameChanged, 5) : invariant(!generated || escapedId.generated || typenameChanged, "Store error: the application attempted to write an object with no provided id but the store already contains an id of " + escapedId.id + " for this object. The selectionSet that was trying to be written is:\n" + JSON.stringify(field));
+                process.env.NODE_ENV === "production" ? invariant(!hadTypename || hasTypename, 6) : invariant(!hadTypename || hasTypename, "Store error: the application attempted to write an object with no provided typename but the store already contains an object with typename of " + escapedId.typename + " for the object of id " + escapedId.id + ". The selectionSet that was trying to be written is:\n" + JSON.stringify(field));
                 if (escapedId.generated) {
                     if (typenameChanged) {
                         if (!generated) {
@@ -13539,7 +13497,7 @@ var StoreWriter = (function () {
         }
         storeObject = store.get(dataId);
         if (!storeObject || !equal(storeValue, storeObject[storeFieldName])) {
-            store.set(dataId, __assign(__assign({}, storeObject), (_b = {}, _b[storeFieldName] = storeValue, _b)));
+            store.set(dataId, __assign$1(__assign$1({}, storeObject), (_b = {}, _b[storeFieldName] = storeValue, _b)));
         }
     };
     StoreWriter.prototype.processArrayValue = function (value, generatedId, selectionSet, context) {
@@ -13595,7 +13553,7 @@ function mergeWithGenerated(generatedKey, realKey, cache) {
         }
     });
     cache.delete(generatedKey);
-    var newRealValue = __assign(__assign({}, generated), real);
+    var newRealValue = __assign$1(__assign$1({}, generated), real);
     if (equal(newRealValue, real)) {
         return madeChanges;
     }
@@ -13649,7 +13607,7 @@ var OptimisticCacheLayer = (function (_super) {
         return _this;
     }
     OptimisticCacheLayer.prototype.toObject = function () {
-        return __assign(__assign({}, this.parent.toObject()), this.data);
+        return __assign$1(__assign$1({}, this.parent.toObject()), this.data);
     };
     OptimisticCacheLayer.prototype.get = function (dataId) {
         return hasOwn$1.call(this.data, dataId)
@@ -13667,7 +13625,7 @@ var InMemoryCache = (function (_super) {
         _this.typenameDocumentCache = new Map();
         _this.cacheKeyRoot = new KeyTrie(canUseWeakMap);
         _this.silenceBroadcast = false;
-        _this.config = __assign(__assign({}, defaultConfig), config);
+        _this.config = __assign$1(__assign$1({}, defaultConfig), config);
         if (_this.config.customResolvers) {
             process.env.NODE_ENV === "production" || invariant.warn('customResolvers have been renamed to cacheRedirects. Please update your config as we will be deprecating customResolvers in the next major version.');
             _this.config.cacheRedirects = _this.config.customResolvers;
@@ -13688,7 +13646,7 @@ var InMemoryCache = (function (_super) {
         });
         var cache = _this;
         var maybeBroadcastWatch = cache.maybeBroadcastWatch;
-        _this.maybeBroadcastWatch = wrap$1(function (c) {
+        _this.maybeBroadcastWatch = wrap(function (c) {
             return maybeBroadcastWatch.call(_this, c);
         }, {
             makeCacheKey: function (c) {
@@ -13766,7 +13724,7 @@ var InMemoryCache = (function (_super) {
         };
     };
     InMemoryCache.prototype.evict = function (query) {
-        throw process.env.NODE_ENV === "production" ? new InvariantError(1) : new InvariantError("eviction is not implemented on InMemory Cache");
+        throw process.env.NODE_ENV === "production" ? new InvariantError(7) : new InvariantError("eviction is not implemented on InMemory Cache");
     };
     InMemoryCache.prototype.reset = function () {
         this.data.clear();
@@ -13916,13 +13874,13 @@ var selectHttpOptionsAndBody = function (operation, fallbackConfig) {
     for (var _i = 2; _i < arguments.length; _i++) {
         configs[_i - 2] = arguments[_i];
     }
-    var options = __assign({}, fallbackConfig.options, { headers: fallbackConfig.headers, credentials: fallbackConfig.credentials });
+    var options = __assign$1({}, fallbackConfig.options, { headers: fallbackConfig.headers, credentials: fallbackConfig.credentials });
     var http = fallbackConfig.http;
     configs.forEach(function (config) {
-        options = __assign({}, options, config.options, { headers: __assign({}, options.headers, config.headers) });
+        options = __assign$1({}, options, config.options, { headers: __assign$1({}, options.headers, config.headers) });
         if (config.credentials)
             options.credentials = config.credentials;
-        http = __assign({}, http, config.http);
+        http = __assign$1({}, http, config.http);
     });
     var operationName = operation.operationName, extensions = operation.extensions, variables = operation.variables, query = operation.query;
     var body = { operationName: operationName, variables: variables };
@@ -13987,7 +13945,7 @@ var createHttpLink = function (linkOptions) {
                 clientAwarenessHeaders['apollographql-client-version'] = version;
             }
         }
-        var contextHeaders = __assign({}, clientAwarenessHeaders, context.headers);
+        var contextHeaders = __assign$1({}, clientAwarenessHeaders, context.headers);
         var contextConfig = {
             http: context.http,
             options: context.fetchOptions,
@@ -14024,7 +13982,7 @@ var createHttpLink = function (linkOptions) {
                 return fromError(parseError);
             }
         }
-        return new Observable(function (observer) {
+        return new Observable$1(function (observer) {
             fetcher(chosenURI, options)
                 .then(function (response) {
                 operation.setContext({ response: response });
@@ -14100,6 +14058,7 @@ var HttpLink = (function (_super) {
     return HttpLink;
 }(ApolloLink));
 
+exports.ConnectionMode = void 0;
 (function (ConnectionMode) {
     ConnectionMode[ConnectionMode["AUTO"] = 0] = "AUTO";
     ConnectionMode[ConnectionMode["PLAIN"] = 1] = "PLAIN";
@@ -14107,6 +14066,7 @@ var HttpLink = (function (_super) {
     ConnectionMode[ConnectionMode["EDGES"] = 3] = "EDGES";
     ConnectionMode[ConnectionMode["ITEMS"] = 4] = "ITEMS";
 })(exports.ConnectionMode || (exports.ConnectionMode = {}));
+exports.ArgumentMode = void 0;
 (function (ArgumentMode) {
     ArgumentMode[ArgumentMode["TYPE"] = 0] = "TYPE";
     ArgumentMode[ArgumentMode["LIST"] = 1] = "LIST";
@@ -14214,16 +14174,16 @@ var Transformer = /** @class */ (function () {
                     if (isPlainObject(data[key])) {
                         var localModel = context.getModel(key, true) || model;
                         if (data[key].nodes && context.connectionMode === exports.ConnectionMode.NODES) {
-                            result[pluralize$1(key)] = _this.transformIncomingData(data[key].nodes, localModel, mutation, true);
+                            result[pluralize(key)] = _this.transformIncomingData(data[key].nodes, localModel, mutation, true);
                         }
                         else if (data[key].edges && context.connectionMode === exports.ConnectionMode.EDGES) {
-                            result[pluralize$1(key)] = _this.transformIncomingData(data[key].edges, localModel, mutation, true);
+                            result[pluralize(key)] = _this.transformIncomingData(data[key].edges, localModel, mutation, true);
                         }
                         else if (data["node"] && context.connectionMode === exports.ConnectionMode.EDGES) {
                             result = _this.transformIncomingData(data["node"], localModel, mutation, true);
                         }
                         else if (data[key].items && context.connectionMode === exports.ConnectionMode.ITEMS) {
-                            result[pluralize$1(key)] = _this.transformIncomingData(data[key].items, localModel, mutation, true);
+                            result[pluralize(key)] = _this.transformIncomingData(data[key].items, localModel, mutation, true);
                         }
                         else {
                             var newKey = key;
@@ -14238,7 +14198,7 @@ var Transformer = /** @class */ (function () {
                         result[key] = parseFloat(data[key]);
                     }
                     else if (key.endsWith("Type") && model.isTypeFieldOfPolymorphicRelation(key)) {
-                        result[key] = pluralize$1(downcaseFirstLetter(data[key]));
+                        result[key] = pluralize(downcaseFirstLetter(data[key]));
                     }
                     else {
                         result[key] = data[key];
@@ -14348,186 +14308,149 @@ var Transformer = /** @class */ (function () {
     return Transformer;
 }());
 
-var parser$1 = getCjsExportFromNamespace(parser);
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
 
-var parse$1 = parser$1.parse;
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
 
-// Strip insignificant whitespace
-// Note that this could do a lot more, such as reorder fields etc.
-function normalize(string) {
-  return string.replace(/[\s,]+/g, ' ').trim();
-}
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
 
-// A map docString -> graphql document
-var docCache = {};
-
-// A map fragmentName -> [normalized source]
-var fragmentSourceMap = {};
-
-function cacheKeyFromLoc(loc) {
-  return normalize(loc.source.body.substring(loc.start, loc.end));
-}
-
-// For testing.
-function resetCaches() {
-  docCache = {};
-  fragmentSourceMap = {};
-}
-
-// Take a unstripped parsed document (query/mutation or even fragment), and
-// check all fragment definitions, checking for name->source uniqueness.
-// We also want to make sure only unique fragments exist in the document.
-var printFragmentWarnings = true;
-function processFragments(ast) {
-  var astFragmentMap = {};
-  var definitions = [];
-
-  for (var i = 0; i < ast.definitions.length; i++) {
-    var fragmentDefinition = ast.definitions[i];
-
-    if (fragmentDefinition.kind === 'FragmentDefinition') {
-      var fragmentName = fragmentDefinition.name.value;
-      var sourceKey = cacheKeyFromLoc(fragmentDefinition.loc);
-
-      // We know something about this fragment
-      if (fragmentSourceMap.hasOwnProperty(fragmentName) && !fragmentSourceMap[fragmentName][sourceKey]) {
-
-        // this is a problem because the app developer is trying to register another fragment with
-        // the same name as one previously registered. So, we tell them about it.
-        if (printFragmentWarnings) {
-          console.warn("Warning: fragment with name " + fragmentName + " already exists.\n"
-            + "graphql-tag enforces all fragment names across your application to be unique; read more about\n"
-            + "this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names");
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
         }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 
-        fragmentSourceMap[fragmentName][sourceKey] = true;
-
-      } else if (!fragmentSourceMap.hasOwnProperty(fragmentName)) {
-        fragmentSourceMap[fragmentName] = {};
-        fragmentSourceMap[fragmentName][sourceKey] = true;
-      }
-
-      if (!astFragmentMap[sourceKey]) {
-        astFragmentMap[sourceKey] = true;
-        definitions.push(fragmentDefinition);
-      }
-    } else {
-      definitions.push(fragmentDefinition);
-    }
-  }
-
-  ast.definitions = definitions;
-  return ast;
-}
-
-function disableFragmentWarnings() {
-  printFragmentWarnings = false;
-}
-
-function stripLoc(doc, removeLocAtThisLevel) {
-  var docType = Object.prototype.toString.call(doc);
-
-  if (docType === '[object Array]') {
-    return doc.map(function (d) {
-      return stripLoc(d, removeLocAtThisLevel);
-    });
-  }
-
-  if (docType !== '[object Object]') {
-    throw new Error('Unexpected input.');
-  }
-
-  // We don't want to remove the root loc field so we can use it
-  // for fragment substitution (see below)
-  if (removeLocAtThisLevel && doc.loc) {
-    delete doc.loc;
-  }
-
-  // https://github.com/apollographql/graphql-tag/issues/40
-  if (doc.loc) {
-    delete doc.loc.startToken;
-    delete doc.loc.endToken;
-  }
-
-  var keys = Object.keys(doc);
-  var key;
-  var value;
-  var valueType;
-
-  for (key in keys) {
-    if (keys.hasOwnProperty(key)) {
-      value = doc[keys[key]];
-      valueType = Object.prototype.toString.call(value);
-
-      if (valueType === '[object Object]' || valueType === '[object Array]') {
-        doc[keys[key]] = stripLoc(value, true);
-      }
-    }
-  }
-
-  return doc;
-}
-
+var docCache = new Map();
+var fragmentSourceMap = new Map();
+var printFragmentWarnings = true;
 var experimentalFragmentVariables = false;
-function parseDocument(doc) {
-  var cacheKey = normalize(doc);
-
-  if (docCache[cacheKey]) {
-    return docCache[cacheKey];
-  }
-
-  var parsed = parse$1(doc, { experimentalFragmentVariables: experimentalFragmentVariables });
-  if (!parsed || parsed.kind !== 'Document') {
-    throw new Error('Not a valid GraphQL document.');
-  }
-
-  // check that all "new" fragments inside the documents are consistent with
-  // existing fragments of the same name
-  parsed = processFragments(parsed);
-  parsed = stripLoc(parsed, false);
-  docCache[cacheKey] = parsed;
-
-  return parsed;
+function normalize(string) {
+    return string.replace(/[\s,]+/g, ' ').trim();
 }
-
-function enableExperimentalFragmentVariables() {
-  experimentalFragmentVariables = true;
+function cacheKeyFromLoc(loc) {
+    return normalize(loc.source.body.substring(loc.start, loc.end));
 }
-
-function disableExperimentalFragmentVariables() {
-  experimentalFragmentVariables = false;
+function processFragments(ast) {
+    var seenKeys = new Set();
+    var definitions = [];
+    ast.definitions.forEach(function (fragmentDefinition) {
+        if (fragmentDefinition.kind === 'FragmentDefinition') {
+            var fragmentName = fragmentDefinition.name.value;
+            var sourceKey = cacheKeyFromLoc(fragmentDefinition.loc);
+            var sourceKeySet = fragmentSourceMap.get(fragmentName);
+            if (sourceKeySet && !sourceKeySet.has(sourceKey)) {
+                if (printFragmentWarnings) {
+                    console.warn("Warning: fragment with name " + fragmentName + " already exists.\n"
+                        + "graphql-tag enforces all fragment names across your application to be unique; read more about\n"
+                        + "this in the docs: http://dev.apollodata.com/core/fragments.html#unique-names");
+                }
+            }
+            else if (!sourceKeySet) {
+                fragmentSourceMap.set(fragmentName, sourceKeySet = new Set);
+            }
+            sourceKeySet.add(sourceKey);
+            if (!seenKeys.has(sourceKey)) {
+                seenKeys.add(sourceKey);
+                definitions.push(fragmentDefinition);
+            }
+        }
+        else {
+            definitions.push(fragmentDefinition);
+        }
+    });
+    return __assign(__assign({}, ast), { definitions: definitions });
 }
-
-// XXX This should eventually disallow arbitrary string interpolation, like Relay does
-function gql(/* arguments */) {
-  var args = Array.prototype.slice.call(arguments);
-
-  var literals = args[0];
-
-  // We always get literals[0] and then matching post literals for each arg given
-  var result = (typeof(literals) === "string") ? literals : literals[0];
-
-  for (var i = 1; i < args.length; i++) {
-    if (args[i] && args[i].kind && args[i].kind === 'Document') {
-      result += args[i].loc.source.body;
-    } else {
-      result += args[i];
+function stripLoc(doc) {
+    var workSet = new Set(doc.definitions);
+    workSet.forEach(function (node) {
+        if (node.loc)
+            delete node.loc;
+        Object.keys(node).forEach(function (key) {
+            var value = node[key];
+            if (value && typeof value === 'object') {
+                workSet.add(value);
+            }
+        });
+    });
+    var loc = doc.loc;
+    if (loc) {
+        delete loc.startToken;
+        delete loc.endToken;
     }
-
-    result += literals[i];
-  }
-
-  return parseDocument(result);
+    return doc;
 }
-
-// Support typescript, which isn't as nice as Babel about default exports
-gql.default = gql;
-gql.resetCaches = resetCaches;
-gql.disableFragmentWarnings = disableFragmentWarnings;
-gql.enableExperimentalFragmentVariables = enableExperimentalFragmentVariables;
-gql.disableExperimentalFragmentVariables = disableExperimentalFragmentVariables;
-
-var src = gql;
+function parseDocument(source) {
+    var cacheKey = normalize(source);
+    if (!docCache.has(cacheKey)) {
+        var parsed = parse(source, {
+            experimentalFragmentVariables: experimentalFragmentVariables
+        });
+        if (!parsed || parsed.kind !== 'Document') {
+            throw new Error('Not a valid GraphQL document.');
+        }
+        docCache.set(cacheKey, stripLoc(processFragments(parsed)));
+    }
+    return docCache.get(cacheKey);
+}
+function gql(literals) {
+    var args = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        args[_i - 1] = arguments[_i];
+    }
+    if (typeof literals === 'string') {
+        literals = [literals];
+    }
+    var result = literals[0];
+    args.forEach(function (arg, i) {
+        if (arg && arg.kind === 'Document') {
+            result += arg.loc.source.body;
+        }
+        else {
+            result += arg;
+        }
+        result += literals[i + 1];
+    });
+    return parseDocument(result);
+}
+function resetCaches() {
+    docCache.clear();
+    fragmentSourceMap.clear();
+}
+function disableFragmentWarnings() {
+    printFragmentWarnings = false;
+}
+function enableExperimentalFragmentVariables() {
+    experimentalFragmentVariables = true;
+}
+function disableExperimentalFragmentVariables() {
+    experimentalFragmentVariables = false;
+}
+var extras = {
+    gql: gql,
+    resetCaches: resetCaches,
+    disableFragmentWarnings: disableFragmentWarnings,
+    enableExperimentalFragmentVariables: enableExperimentalFragmentVariables,
+    disableExperimentalFragmentVariables: disableExperimentalFragmentVariables
+};
+(function (gql_1) {
+    gql_1.gql = extras.gql, gql_1.resetCaches = extras.resetCaches, gql_1.disableFragmentWarnings = extras.disableFragmentWarnings, gql_1.enableExperimentalFragmentVariables = extras.enableExperimentalFragmentVariables, gql_1.disableExperimentalFragmentVariables = extras.disableExperimentalFragmentVariables;
+})(gql || (gql = {}));
+gql["default"] = gql;
+var gql$1 = gql;
 
 /**
  * This class takes care of the communication with the graphql endpoint by leveraging the awesome apollo-client lib.
@@ -14606,7 +14529,7 @@ var Apollo = /** @class */ (function () {
             return __generator(this, function (_a) {
                 fetchPolicy = bypassCache ? "network-only" : "cache-first";
                 return [2 /*return*/, this.apolloClient.query({
-                        query: src(query),
+                        query: gql$1(query),
                         variables: variables,
                         fetchPolicy: fetchPolicy,
                         context: { headers: Apollo.getHeaders() }
@@ -14618,7 +14541,7 @@ var Apollo = /** @class */ (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 return [2 /*return*/, this.apolloClient.mutate({
-                        mutation: src(query),
+                        mutation: gql$1(query),
                         variables: variables,
                         context: { headers: Apollo.getHeaders() }
                     })];
@@ -15076,7 +14999,7 @@ var QueryBuilder = /** @class */ (function () {
         var query = type + " " + upcaseFirstLetter(name) + this.buildArguments(model, args, true, filter, true, field) + " {\n" +
             ("  " + this.buildField(model, multiple, args, [], name, filter, true) + "\n") +
             "}";
-        return src(query);
+        return gql$1(query);
     };
     /**
      * Generates the arguments string for a graphql query based on a given map.
@@ -15253,7 +15176,7 @@ var QueryBuilder = /** @class */ (function () {
         if (path === void 0) { path = []; }
         if (model === null)
             return "";
-        var context = Context.getInstance();
+        Context.getInstance();
         var relationQueries = [];
         model.getRelations().forEach(function (field, name) {
             var relatedModel = Model.getRelatedModel(field);
@@ -15590,7 +15513,9 @@ var Fetch = /** @class */ (function (_super) {
                         multiple = !filter["id"];
                         name = context.adapter.getNameForFetch(model, multiple);
                         query = QueryBuilder.buildQuery("query", model, name, filter, multiple, multiple);
-                        return [4 /*yield*/, context.apollo.request(model, query, filter, false, bypassCache)];
+                        return [4 /*yield*/, context.apollo.request(model, query, 
+                            // @ts-ignore
+                            Context.getInstance().adapter.getArgumentMode() === exports.ArgumentMode.TYPE ? filter : filter === null || filter === void 0 ? void 0 : filter.filter, false, bypassCache)];
                     case 2:
                         data = _b.sent();
                         // Insert incoming data into the store
@@ -15957,7 +15882,7 @@ var SimpleQuery = /** @class */ (function (_super) {
      * @returns {Promise<any>} The result
      */
     SimpleQuery.call = function (_a, _b) {
-        var dispatch = _a.dispatch;
+        _a.dispatch;
         var query = _b.query, bypassCache = _b.bypassCache, variables = _b.variables;
         return __awaiter(this, void 0, void 0, function () {
             var context, parsedQuery, mockReturnValue, result;
@@ -16012,7 +15937,7 @@ var SimpleMutation = /** @class */ (function (_super) {
      * @returns {Promise<any>} The result
      */
     SimpleMutation.call = function (_a, _b) {
-        var dispatch = _a.dispatch;
+        _a.dispatch;
         var query = _b.query, variables = _b.variables;
         return __awaiter(this, void 0, void 0, function () {
             var context, parsedQuery, mockReturnValue, result;

@@ -1,8 +1,8 @@
 import Logger from "./logger";
 import Model from "../orm/model";
-import { PluginComponents } from "@vuex-orm/core/lib/plugins/use";
+import { PluginComponents } from "@vuex-orm/core";
 import Apollo from "../graphql/apollo";
-import Database from "@vuex-orm/core/lib/database/Database";
+import { Database } from "@vuex-orm/core";
 import { Options } from "../support/interfaces";
 import Schema from "../graphql/schema";
 import { Mock, MockOptions } from "../test-utils";

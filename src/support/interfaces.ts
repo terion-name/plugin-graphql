@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 import { Database, Model as ORMModel } from "@vuex-orm/core";
-import ORMInstance from "@vuex-orm/core/lib/data/Instance";
-import RootState from "@vuex-orm/core/lib/modules/contracts/RootState";
+import ORMInstance from "@vuex-orm/core/dist/src/data/Instance";
+import RootState from "@vuex-orm/core/dist/src/modules/contracts/RootState";
 import { ApolloLink } from "apollo-link";
 import { DocumentNode } from "graphql/language/ast";
 import Adapter from "../adapters/adapter";
