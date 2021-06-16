@@ -77,7 +77,8 @@ export default class Fetch extends Action {
       // @ts-ignore
       Context.getInstance().adapter.getArgumentMode() === ArgumentMode.TYPE
         ? filter
-        : filter?.filter,
+        : // @ts-ignore
+          filter?.filter,
       false,
       bypassCache as boolean
     );

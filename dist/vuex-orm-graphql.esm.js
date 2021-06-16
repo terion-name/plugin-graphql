@@ -15448,7 +15448,10 @@ class Fetch extends Action {
         // Send the request to the GraphQL API
         const data = await context.apollo.request(model, query, 
         // @ts-ignore
-        Context.getInstance().adapter.getArgumentMode() === ArgumentMode.TYPE ? filter : filter === null || filter === void 0 ? void 0 : filter.filter, false, bypassCache);
+        Context.getInstance().adapter.getArgumentMode() === ArgumentMode.TYPE
+            ? filter
+            // @ts-ignore
+            : filter === null || filter === void 0 ? void 0 : filter.filter, false, bypassCache);
         // Insert incoming data into the store
         return Store.insertData(data, dispatch);
     }
@@ -15870,4 +15873,4 @@ function mock(action, options) {
 }
 
 export default VuexORMGraphQLPlugin;
-export { ArgumentMode, ConnectionMode, DefaultAdapter, Mock, Model, clearORMStore, mock, setupTestUtils };
+export { ArgumentMode, ConnectionMode, DefaultAdapter, Mock, Model, QueryBuilder, clearORMStore, mock, setupTestUtils };

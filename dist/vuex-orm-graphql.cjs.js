@@ -15515,7 +15515,10 @@ var Fetch = /** @class */ (function (_super) {
                         query = QueryBuilder.buildQuery("query", model, name, filter, multiple, multiple);
                         return [4 /*yield*/, context.apollo.request(model, query, 
                             // @ts-ignore
-                            Context.getInstance().adapter.getArgumentMode() === exports.ArgumentMode.TYPE ? filter : filter === null || filter === void 0 ? void 0 : filter.filter, false, bypassCache)];
+                            Context.getInstance().adapter.getArgumentMode() === exports.ArgumentMode.TYPE
+                                ? filter
+                                // @ts-ignore
+                                : filter === null || filter === void 0 ? void 0 : filter.filter, false, bypassCache)];
                     case 2:
                         data = _b.sent();
                         // Insert incoming data into the store
@@ -16090,6 +16093,7 @@ function mock(action, options) {
 exports.DefaultAdapter = DefaultAdapter;
 exports.Mock = Mock;
 exports.Model = Model;
+exports.QueryBuilder = QueryBuilder;
 exports.clearORMStore = clearORMStore;
 exports.default = VuexORMGraphQLPlugin;
 exports.mock = mock;
