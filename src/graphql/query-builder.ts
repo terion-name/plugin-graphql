@@ -225,9 +225,12 @@ export default class QueryBuilder {
             } else if (schemaField && Schema.getTypeNameOfField(schemaField)) {
               // Case 1, 3 and 4
               typeOrValue = Schema.getTypeNameOfField(schemaField) + "!";
-            } else if (key === "id" || isForeignKey) {
+            } else if (schemaField && (key === "id" || isForeignKey)) {
               // Case 1 (ID!)
-              typeOrValue = "ID!";
+              typeOrValue =
+                Schema.getTypeNameOfField(schemaField) === "String"
+                  ? "ID!"
+                  : Schema.getTypeNameOfField(schemaField) + "!";
             } else {
               // Case 1 (String!)
               typeOrValue = this.determineAttributeType(model, key, value, field || undefined);

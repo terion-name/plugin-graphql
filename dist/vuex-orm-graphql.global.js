@@ -15063,9 +15063,9 @@ var VuexORMGraphQLPlugin = (function (exports) {
                                 // Case 1, 3 and 4
                                 typeOrValue = Schema.getTypeNameOfField(schemaField) + "!";
                             }
-                            else if (key === "id" || isForeignKey) {
+                            else if (schemaField && (key === "id" || isForeignKey)) {
                                 // Case 1 (ID!)
-                                typeOrValue = "ID!";
+                                typeOrValue = (Schema.getTypeNameOfField(schemaField) === 'String') ? "ID!" : Schema.getTypeNameOfField(schemaField) + "!";
                             }
                             else {
                                 // Case 1 (String!)
@@ -15516,8 +15516,8 @@ var VuexORMGraphQLPlugin = (function (exports) {
                                 // @ts-ignore
                                 Context.getInstance().adapter.getArgumentMode() === exports.ArgumentMode.TYPE
                                     ? filter
-                                    // @ts-ignore
-                                    : filter === null || filter === void 0 ? void 0 : filter.filter, false, bypassCache)];
+                                    : // @ts-ignore
+                                     filter === null || filter === void 0 ? void 0 : filter.filter, false, bypassCache)];
                         case 2:
                             data = _b.sent();
                             // Insert incoming data into the store
